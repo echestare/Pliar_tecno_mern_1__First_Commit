@@ -24,7 +24,24 @@ const countries = require('./countries.json');
  * @returns {string}
  */
 function getCountryTranslatedName(isoCode, language){
-    //Complete with your code
+    
+    let country_name_translated = {};
+
+    for(let i=0 ; i<countries.length ; i++){
+        if(isoCode === countries[i].iso3){
+            country_name_translated.isoCode = countries[i].iso3;
+
+            for(language_found in countries[i].translations){
+                if(language === language_found){
+                    country_name_translated.translation = countries[i].translations[language_found];
+
+                }
+            }
+        }
+    }
+
+    return country_name_translated;
+
 }
 /**Get an array of all the countries with the specified subregion
  * @param  {string} subregion
